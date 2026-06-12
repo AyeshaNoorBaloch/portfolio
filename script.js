@@ -3,11 +3,12 @@
 // ==========================
 
 const roles = [
-"HR Analyst",
-"People Analytics Specialist",
-"Data Visualization Expert",
+"Data Analyst",
+"HR Analytics Specialist",
 "Power BI Developer",
-"People Data Storyteller"
+"Business Intelligence Analyst",
+"SQL & Python Analyst",
+"Data Visualization Expert"
 ];
 
 let roleIndex = 0;
@@ -30,9 +31,11 @@ currentRole.substring(0, charIndex + 1);
 charIndex++;
 
 if (charIndex === currentRole.length) {
+
 deleting = true;
 setTimeout(typeWriter, 2000);
 return;
+
 }
 
 } else {
@@ -43,8 +46,10 @@ currentRole.substring(0, charIndex - 1);
 charIndex--;
 
 if (charIndex === 0) {
+
 deleting = false;
 roleIndex = (roleIndex + 1) % roles.length;
+
 }
 
 }
@@ -140,13 +145,17 @@ revealOnScroll();
 
 
 // ==========================
-// CHART.JS GLOBAL STYLE
+// CHART.JS DEFAULTS
 // ==========================
+
+if(typeof Chart !== "undefined"){
 
 Chart.defaults.color = "#CBD5E1";
 
 Chart.defaults.borderColor =
 "rgba(255,255,255,.08)";
+
+}
 
 
 // ==========================
@@ -230,9 +239,7 @@ color: "#fff"
 // ==========================
 
 const recruitmentCtx =
-document.getElementById(
-"recruitmentChart"
-);
+document.getElementById("recruitmentChart");
 
 if(recruitmentCtx){
 
@@ -243,13 +250,11 @@ type: "line",
 data: {
 
 labels: [
-
 "Applications",
 "Screening",
 "Interview",
 "Offer",
 "Hired"
-
 ],
 
 datasets: [{
@@ -257,17 +262,14 @@ datasets: [{
 label: "Candidates",
 
 data: [
-
 2500,
 1200,
 500,
 180,
 95
-
 ],
 
-borderColor:
-"#06B6D4",
+borderColor: "#06B6D4",
 
 backgroundColor:
 "rgba(6,182,212,.2)",
@@ -296,9 +298,7 @@ responsive: true
 // ==========================
 
 const engagementCtx =
-document.getElementById(
-"engagementChart"
-);
+document.getElementById("engagementChart");
 
 if(engagementCtx){
 
@@ -309,30 +309,25 @@ type: "line",
 data: {
 
 labels: [
-
 "Jan",
 "Feb",
 "Mar",
 "Apr",
 "May",
 "Jun"
-
 ],
 
 datasets: [{
 
-label:
-"Engagement Score",
+label: "Engagement Score",
 
 data: [
-
 72,
 74,
 75,
 77,
 79,
 81
-
 ],
 
 borderColor:
@@ -365,9 +360,7 @@ responsive: true
 // ==========================
 
 const workforceCtx =
-document.getElementById(
-"workforceChart"
-);
+document.getElementById("workforceChart");
 
 if(workforceCtx){
 
@@ -378,25 +371,21 @@ type: "doughnut",
 data: {
 
 labels: [
-
 "Sales",
 "Operations",
 "IT",
 "Finance",
 "HR"
-
 ],
 
 datasets: [{
 
 data: [
-
 35,
 25,
 18,
 15,
 7
-
 ],
 
 backgroundColor: [
@@ -441,13 +430,11 @@ color: "#fff"
 
 
 // ==========================
-// SMOOTH NAV ACTIVE EFFECT
+// NAV ACTIVE EFFECT
 // ==========================
 
 const navLinks =
-document.querySelectorAll(
-".nav-links a"
-);
+document.querySelectorAll(".nav-links a");
 
 navLinks.forEach(link => {
 
@@ -468,7 +455,97 @@ this.classList.add("active");
 
 
 // ==========================
-// FLOATING PARTICLE EFFECT
+// SMOOTH SCROLL
+// ==========================
+
+document.querySelectorAll(
+'a[href^="#"]'
+).forEach(anchor => {
+
+anchor.addEventListener(
+"click",
+function(e){
+
+e.preventDefault();
+
+const target =
+document.querySelector(
+this.getAttribute("href")
+);
+
+if(target){
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+}
+
+);
+
+});
+
+
+// ==========================
+// PROJECT IMAGE CLICK
+// ==========================
+
+document.querySelectorAll(
+".project-card img"
+).forEach(image => {
+
+image.addEventListener(
+"click",
+() => {
+
+window.open(
+image.src,
+"_blank"
+);
+
+}
+);
+
+});
+
+
+// ==========================
+// PROJECT CARD REVEAL
+// ==========================
+
+const projectCards =
+document.querySelectorAll(".project-card");
+
+const projectObserver =
+new IntersectionObserver((entries) => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+threshold:0.15
+});
+
+projectCards.forEach(card => {
+
+projectObserver.observe(card);
+
+});
+
+
+// ==========================
+// FLOATING PARTICLES
 // ==========================
 
 const particleCount = 20;
@@ -514,10 +591,10 @@ particle
 // ==========================
 
 console.log(
-"%cAyesha Noor Baloch Portfolio",
-"color:#3B82F6;font-size:18px;font-weight:bold;"
+"%cAyesha Noor Baloch | Data Analytics Portfolio",
+"color:#06B6D4;font-size:18px;font-weight:bold;"
 );
 
 console.log(
-"HR Analyst | People Analytics | Data Visualization"
+"Power BI | SQL | Python | Tableau | R | HR Analytics"
 );
