@@ -1,34 +1,117 @@
-const cards =
-document.querySelectorAll(
-'.card,.project-card,.stat'
-);
+// Animated Counters
 
-const observer =
-new IntersectionObserver(entries => {
+function animateValue(id,start,end,duration){
 
-entries.forEach(entry => {
+let obj=document.getElementById(id);
+let range=end-start;
+let current=start;
+let increment=end>start?1:-1;
+let stepTime=Math.abs(Math.floor(duration/range));
 
-if(entry.isIntersecting){
+let timer=setInterval(()=>{
 
-entry.target.style.opacity = 1;
-entry.target.style.transform =
-'translateY(0px)';
+current+=increment;
 
+obj.innerHTML=current;
+
+if(current==end){
+clearInterval(timer);
 }
 
-});
+},stepTime);
+}
 
-});
+animateValue("projectsCounter",0,16,2000);
+animateValue("certCounter",0,6,2000);
+animateValue("toolsCounter",0,6,2000);
+animateValue("experienceCounter",0,2,2000);
 
-cards.forEach(card => {
 
-card.style.opacity = 0;
-card.style.transform =
-'translateY(30px)';
+// Attrition Chart
 
-card.style.transition =
-'all 0.7s ease';
+new Chart(
+document.getElementById("attritionChart"),
+{
+type:"bar",
+data:{
+labels:[
+"HR",
+"Finance",
+"Sales",
+"IT",
+"Operations"
+],
+datasets:[{
+label:"Attrition %",
+data:[8,12,18,10,14]
+}]
+},
+options:{
+responsive:true
+}
+}
+);
 
-observer.observe(card);
 
-});
+// Recruitment Funnel
+
+new Chart(
+document.getElementById("recruitmentChart"),
+{
+type:"line",
+data:{
+labels:[
+"Applications",
+"Screening",
+"Interviews",
+"Offers",
+"Hires"
+],
+datasets:[{
+label:"Candidates",
+data:[500,300,180,90,45],
+fill:false
+}]
+}
+}
+);
+
+
+// Engagement
+
+new Chart(
+document.getElementById("engagementChart"),
+{
+type:"doughnut",
+data:{
+labels:[
+"Highly Engaged",
+"Moderate",
+"Low"
+],
+datasets:[{
+data:[55,30,15]
+}]
+}
+}
+);
+
+
+// Training
+
+new Chart(
+document.getElementById("trainingChart"),
+{
+type:"pie",
+data:{
+labels:[
+"Completed",
+"In Progress",
+"Not Started"
+],
+datasets:[{
+data:[70,20,10]
+}]
+}
+}
+);
