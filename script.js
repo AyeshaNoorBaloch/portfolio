@@ -1,117 +1,523 @@
-// Animated Counters
+// ==========================
+// TYPEWRITER EFFECT
+// ==========================
 
-function animateValue(id,start,end,duration){
+const roles = [
+"HR Analyst",
+"People Analytics Specialist",
+"Data Visualization Expert",
+"Power BI Developer",
+"People Data Storyteller"
+];
 
-let obj=document.getElementById(id);
-let range=end-start;
-let current=start;
-let increment=end>start?1:-1;
-let stepTime=Math.abs(Math.floor(duration/range));
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-let timer=setInterval(()=>{
+const typingElement = document.getElementById("typing");
 
-current+=increment;
+function typeWriter() {
 
-obj.innerHTML=current;
+if (!typingElement) return;
 
-if(current==end){
+const currentRole = roles[roleIndex];
+
+if (!deleting) {
+
+typingElement.textContent =
+currentRole.substring(0, charIndex + 1);
+
+charIndex++;
+
+if (charIndex === currentRole.length) {
+deleting = true;
+setTimeout(typeWriter, 2000);
+return;
+}
+
+} else {
+
+typingElement.textContent =
+currentRole.substring(0, charIndex - 1);
+
+charIndex--;
+
+if (charIndex === 0) {
+deleting = false;
+roleIndex = (roleIndex + 1) % roles.length;
+}
+
+}
+
+setTimeout(typeWriter, deleting ? 50 : 100);
+
+}
+
+typeWriter();
+
+
+// ==========================
+// COUNTER ANIMATION
+// ==========================
+
+function animateCounter(id, target, suffix = "") {
+
+const element = document.getElementById(id);
+
+if (!element) return;
+
+let current = 0;
+
+const increment = target / 80;
+
+const timer = setInterval(() => {
+
+current += increment;
+
+if (current >= target) {
+
+current = target;
 clearInterval(timer);
+
 }
 
-},stepTime);
+element.innerText =
+Math.floor(current) + suffix;
+
+}, 20);
+
 }
 
-animateValue("projectsCounter",0,16,2000);
-animateValue("certCounter",0,6,2000);
-animateValue("toolsCounter",0,6,2000);
-animateValue("experienceCounter",0,2,2000);
+window.addEventListener("load", () => {
+
+animateCounter("employeeCounter", 1470);
+
+animateCounter("attritionCounter", 16, "%");
+
+animateCounter("retentionCounter", 84, "%");
+
+animateCounter("engagementCounter", 78, "%");
+
+});
 
 
-// Attrition Chart
+// ==========================
+// SCROLL REVEAL
+// ==========================
 
-new Chart(
-document.getElementById("attritionChart"),
-{
-type:"bar",
-data:{
-labels:[
+const revealElements =
+document.querySelectorAll(
+".kpi-card,.chart-card,.project-card,.cert-card,.timeline-item,.glass-card"
+);
+
+function revealOnScroll() {
+
+revealElements.forEach((element) => {
+
+const windowHeight =
+window.innerHeight;
+
+const top =
+element.getBoundingClientRect().top;
+
+if (top < windowHeight - 100) {
+
+element.classList.add("active");
+element.classList.add("reveal");
+
+}
+
+});
+
+}
+
+window.addEventListener(
+"scroll",
+revealOnScroll
+);
+
+revealOnScroll();
+
+
+// ==========================
+// CHART.JS GLOBAL STYLE
+// ==========================
+
+Chart.defaults.color = "#CBD5E1";
+
+Chart.defaults.borderColor =
+"rgba(255,255,255,.08)";
+
+
+// ==========================
+// ATTRITION CHART
+// ==========================
+
+const attritionCtx =
+document.getElementById("attritionChart");
+
+if(attritionCtx){
+
+new Chart(attritionCtx, {
+
+type: "bar",
+
+data: {
+
+labels: [
+"Sales",
 "HR",
 "Finance",
-"Sales",
 "IT",
 "Operations"
 ],
-datasets:[{
-label:"Attrition %",
-data:[8,12,18,10,14]
+
+datasets: [{
+
+label: "Attrition %",
+
+data: [
+22,
+14,
+10,
+9,
+12
+],
+
+backgroundColor: [
+
+"#3B82F6",
+"#06B6D4",
+"#8B5CF6",
+"#10B981",
+"#F59E0B"
+
+],
+
+borderRadius: 10
+
 }]
+
 },
-options:{
-responsive:true
+
+options: {
+
+responsive: true,
+
+plugins: {
+
+legend: {
+
+labels: {
+
+color: "#fff"
+
 }
+
 }
+
+}
+
+}
+
+});
+
+}
+
+
+// ==========================
+// RECRUITMENT FUNNEL
+// ==========================
+
+const recruitmentCtx =
+document.getElementById(
+"recruitmentChart"
 );
 
+if(recruitmentCtx){
 
-// Recruitment Funnel
+new Chart(recruitmentCtx, {
 
-new Chart(
-document.getElementById("recruitmentChart"),
-{
-type:"line",
-data:{
-labels:[
+type: "line",
+
+data: {
+
+labels: [
+
 "Applications",
 "Screening",
-"Interviews",
-"Offers",
-"Hires"
+"Interview",
+"Offer",
+"Hired"
+
 ],
-datasets:[{
-label:"Candidates",
-data:[500,300,180,90,45],
-fill:false
+
+datasets: [{
+
+label: "Candidates",
+
+data: [
+
+2500,
+1200,
+500,
+180,
+95
+
+],
+
+borderColor:
+"#06B6D4",
+
+backgroundColor:
+"rgba(6,182,212,.2)",
+
+fill: true,
+
+tension: .4
+
 }]
+
+},
+
+options: {
+
+responsive: true
+
 }
+
+});
+
+}
+
+
+// ==========================
+// ENGAGEMENT TREND
+// ==========================
+
+const engagementCtx =
+document.getElementById(
+"engagementChart"
+);
+
+if(engagementCtx){
+
+new Chart(engagementCtx, {
+
+type: "line",
+
+data: {
+
+labels: [
+
+"Jan",
+"Feb",
+"Mar",
+"Apr",
+"May",
+"Jun"
+
+],
+
+datasets: [{
+
+label:
+"Engagement Score",
+
+data: [
+
+72,
+74,
+75,
+77,
+79,
+81
+
+],
+
+borderColor:
+"#8B5CF6",
+
+backgroundColor:
+"rgba(139,92,246,.2)",
+
+fill: true,
+
+tension: .4
+
+}]
+
+},
+
+options: {
+
+responsive: true
+
+}
+
+});
+
+}
+
+
+// ==========================
+// WORKFORCE DISTRIBUTION
+// ==========================
+
+const workforceCtx =
+document.getElementById(
+"workforceChart"
+);
+
+if(workforceCtx){
+
+new Chart(workforceCtx, {
+
+type: "doughnut",
+
+data: {
+
+labels: [
+
+"Sales",
+"Operations",
+"IT",
+"Finance",
+"HR"
+
+],
+
+datasets: [{
+
+data: [
+
+35,
+25,
+18,
+15,
+7
+
+],
+
+backgroundColor: [
+
+"#3B82F6",
+"#06B6D4",
+"#8B5CF6",
+"#10B981",
+"#F59E0B"
+
+]
+
+}]
+
+},
+
+options: {
+
+responsive: true,
+
+plugins: {
+
+legend: {
+
+position: "bottom",
+
+labels: {
+
+color: "#fff"
+
+}
+
+}
+
+}
+
+}
+
+});
+
+}
+
+
+// ==========================
+// SMOOTH NAV ACTIVE EFFECT
+// ==========================
+
+const navLinks =
+document.querySelectorAll(
+".nav-links a"
+);
+
+navLinks.forEach(link => {
+
+link.addEventListener(
+"click",
+function(){
+
+navLinks.forEach(
+l => l.classList.remove("active")
+);
+
+this.classList.add("active");
+
 }
 );
 
+});
 
-// Engagement
 
-new Chart(
-document.getElementById("engagementChart"),
-{
-type:"doughnut",
-data:{
-labels:[
-"Highly Engaged",
-"Moderate",
-"Low"
-],
-datasets:[{
-data:[55,30,15]
-}]
-}
-}
+// ==========================
+// FLOATING PARTICLE EFFECT
+// ==========================
+
+const particleCount = 20;
+
+for(let i=0;i<particleCount;i++){
+
+const particle =
+document.createElement("div");
+
+particle.style.position="fixed";
+
+particle.style.width="3px";
+particle.style.height="3px";
+
+particle.style.borderRadius="50%";
+
+particle.style.background=
+"rgba(255,255,255,.15)";
+
+particle.style.left=
+Math.random()*100+"vw";
+
+particle.style.top=
+Math.random()*100+"vh";
+
+particle.style.pointerEvents=
+"none";
+
+particle.style.zIndex="-1";
+
+particle.style.animation=
+`float ${5 + Math.random()*10}s linear infinite`;
+
+document.body.appendChild(
+particle
 );
 
-
-// Training
-
-new Chart(
-document.getElementById("trainingChart"),
-{
-type:"pie",
-data:{
-labels:[
-"Completed",
-"In Progress",
-"Not Started"
-],
-datasets:[{
-data:[70,20,10]
-}]
 }
-}
+
+
+// ==========================
+// CONSOLE SIGNATURE
+// ==========================
+
+console.log(
+"%cAyesha Noor Baloch Portfolio",
+"color:#3B82F6;font-size:18px;font-weight:bold;"
+);
+
+console.log(
+"HR Analyst | People Analytics | Data Visualization"
 );
