@@ -3,117 +3,212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ayesha Noor Baloch | HR Analyst Portfolio</title>
+<title>Ayesha Noor Baloch | HR Analytics Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-<nav>
+<nav class="navbar">
     <div class="logo">Ayesha Noor Baloch</div>
 
     <ul>
+        <li><a href="#dashboard">Dashboard</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
-<header class="hero">
+<section class="hero">
 
     <div class="hero-content">
 
-        <span class="badge">
-            HR Analyst • People Analytics Specialist
-        </span>
-
-        <h1>
-            Transforming Workforce Data into Strategic Decisions
-        </h1>
+        <h1>HR Analyst & People Analytics Professional</h1>
 
         <p>
-            HR Analyst skilled in Power BI, SQL, Excel, Python, Tableau,
-            DAX and Workforce Analytics.
-            Experienced in analyzing 238,000+ records and building
-            interactive dashboards that drive business decisions.
+            Transforming workforce data into strategic business decisions
+            through Power BI, SQL, Python, Tableau, R and Excel.
         </p>
 
-        <div class="buttons">
-
-            <a href="#projects" class="btn primary">
-                View Projects
-            </a>
-
-            <a href="mailto:noorbalochayesha@gmail.com" class="btn secondary">
-                Contact Me
-            </a>
-
+        <div class="hero-buttons">
+            <a href="#dashboard" class="btn primary">View Dashboard</a>
+            <a href="mailto:noorbalochayesha@gmail.com" class="btn secondary">Contact Me</a>
         </div>
 
     </div>
 
-</header>
+</section>
 
-<section class="stats">
+<section id="dashboard" class="dashboard">
 
-    <div class="stat">
-        <h2>238K+</h2>
-        <p>Records Analyzed</p>
+    <h2>Executive Analytics Dashboard</h2>
+
+    <div class="kpi-grid">
+
+        <div class="card">
+            <h3 id="projectsCounter">0</h3>
+            <p>Projects Completed</p>
+        </div>
+
+        <div class="card">
+            <h3 id="certCounter">0</h3>
+            <p>Certifications</p>
+        </div>
+
+        <div class="card">
+            <h3 id="toolsCounter">0</h3>
+            <p>Analytics Tools</p>
+        </div>
+
+        <div class="card">
+            <h3 id="experienceCounter">0</h3>
+            <p>Years Experience</p>
+        </div>
+
     </div>
 
-    <div class="stat">
-        <h2>40%</h2>
-        <p>Reporting Time Reduced</p>
-    </div>
+    <div class="chart-grid">
 
-    <div class="stat">
-        <h2>5+</h2>
-        <p>Analytics Dashboards</p>
-    </div>
+        <div class="chart-card">
+            <h3>Employee Attrition Analysis</h3>
+            <canvas id="attritionChart"></canvas>
+        </div>
 
-    <div class="stat">
-        <h2>6+</h2>
-        <p>Analytics Tools</p>
+        <div class="chart-card">
+            <h3>Recruitment Funnel</h3>
+            <canvas id="recruitmentChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h3>Employee Engagement</h3>
+            <canvas id="engagementChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h3>Training Completion</h3>
+            <canvas id="trainingChart"></canvas>
+        </div>
+
     </div>
 
 </section>
 
-<section id="about">
+<section id="about" class="section">
 
-    <h2>About Me</h2>
+<h2>About Me</h2>
 
-    <p>
-        Analytical and detail-oriented HR Analyst specializing in
-        People Analytics, Workforce Reporting, Recruitment Analytics,
-        Attrition Analysis and Dashboard Development.
-    </p>
-
-</section>
-
-<section id="skills">
-
-    <h2>Skills</h2>
-
-    <div class="skill-grid">
-
-        <div class="card">Power BI</div>
-        <div class="card">SQL</div>
-        <div class="card">Excel</div>
-        <div class="card">Python</div>
-        <div class="card">Tableau</div>
-        <div class="card">DAX</div>
-        <div class="card">Power Query</div>
-        <div class="card">People Analytics</div>
-
-    </div>
+<p>
+HR Analyst with 2 years of experience in workforce analytics,
+reporting and dashboard development.
+I specialize in transforming employee data into actionable business
+insights using Power BI, SQL, Python, Tableau, R and Excel.
+</p>
 
 </section>
 
-<section id="projects">
+<section id="skills" class="section">
+
+<h2>Skills Dashboard</h2>
+
+<div class="skills">
+
+<div class="skill">
+<span>Power BI</span>
+<div class="bar"><div style="width:95%"></div></div>
+</div>
+
+<div class="skill">
+<span>Excel</span>
+<div class="bar"><div style="width:96%"></div></div>
+</div>
+
+<div class="skill">
+<span>SQL</span>
+<div class="bar"><div style="width:92%"></div></div>
+</div>
+
+<div class="skill">
+<span>Python</span>
+<div class="bar"><div style="width:88%"></div></div>
+</div>
+
+<div class="skill">
+<span>Tableau</span>
+<div class="bar"><div style="width:90%"></div></div>
+</div>
+
+<div class="skill">
+<span>R</span>
+<div class="bar"><div style="width:82%"></div></div>
+</div>
+
+</div>
+
+</section>
+
+<section id="certifications" class="section">
+
+<h2>Certifications</h2>
+
+<div class="cert-grid">
+
+<div class="cert-card">
+Associate Data Analyst in SQL
+</div>
+
+<div class="cert-card">
+Data Analyst in Python
+</div>
+
+<div class="cert-card">
+Data Analyst in Power BI
+</div>
+
+<div class="cert-card">
+Data Analyst in Tableau
+</div>
+
+<div class="cert-card">
+Data Analyst in R
+</div>
+
+<div class="cert-card">
+Become a Data Analyst
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Education</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>A Levels</h3>
+<p>Business, Accounting, Computer Science</p>
+</div>
+
+<div class="timeline-item">
+<h3>O Levels</h3>
+<p>Business, Accounting, Computer Science, Mathematics, English</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="projects" class="section">
 
 <h2>Featured Projects</h2>
 
@@ -121,39 +216,29 @@
 
 <div class="project-card">
 <h3>Employee Attrition Dashboard</h3>
-<p>
-Analyzed turnover trends and identified
-high-risk employee segments.
-</p>
+<p>Power BI | HR Analytics</p>
 </div>
 
 <div class="project-card">
-<h3>Recruitment Analytics Dashboard</h3>
-<p>
-Tracked hiring funnel performance,
-time-to-hire and recruitment KPIs.
-</p>
+<h3>Recruitment Funnel Dashboard</h3>
+<p>SQL + Excel</p>
 </div>
 
 <div class="project-card">
-<h3>Workforce Planning Dashboard</h3>
-<p>
-Headcount forecasting and workforce capacity planning.
-</p>
+<h3>Compensation Analytics</h3>
+<p>Python + Tableau</p>
 </div>
 
 <div class="project-card">
-<h3>Performance Analytics Dashboard</h3>
-<p>
-Measured employee performance metrics and trends.
-</p>
+<h3>Employee Engagement Analytics</h3>
+<p>R + Dashboarding</p>
 </div>
 
 </div>
 
 </section>
 
-<section id="contact">
+<section id="contact" class="section contact">
 
 <h2>Contact</h2>
 
@@ -176,9 +261,7 @@ github.com/AyeshaNoorBaloch
 </section>
 
 <footer>
-
 © 2026 Ayesha Noor Baloch | HR Analytics Portfolio
-
 </footer>
 
 <script src="script.js"></script>
