@@ -598,3 +598,22 @@ console.log(
 console.log(
 "Power BI | SQL | Python | Tableau | R | HR Analytics"
 );
+function sendWhatsAppMessage(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const text =
+        `Hello Ayesha,%0A%0A` +
+        `Name: ${name}%0A` +
+        `Email: ${email}%0A%0A` +
+        `Message:%0A${message}`;
+
+    window.open(
+        `https://wa.me/923327887473?text=${text}`,
+        "_blank"
+    );
+}
