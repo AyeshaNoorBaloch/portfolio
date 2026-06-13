@@ -595,3 +595,15 @@ height:240px;
 }
 
 }
+
+
+.cert-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s ease;
+}
