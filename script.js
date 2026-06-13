@@ -617,3 +617,60 @@ function sendWhatsAppMessage(event) {
         "_blank"
     );
 }
+
+
+// Employee Attrition Chart
+
+const attritionCtx = document.getElementById('attritionChart');
+
+new Chart(attritionCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Retained', 'Attrition'],
+        datasets: [{
+            data: [84, 16],
+            backgroundColor: [
+                '#4CAF50',
+                '#FF6384'
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+
+
+// Recruitment Funnel Chart
+
+const recruitmentCtx = document.getElementById('recruitmentChart');
+
+new Chart(recruitmentCtx, {
+    type: 'bar',
+    data: {
+        labels: [
+            'Applications',
+            'Screened',
+            'Interviews',
+            'Offers',
+            'Hires'
+        ],
+        datasets: [{
+            label: 'Candidates',
+            data: [1000, 400, 150, 60, 25]
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
