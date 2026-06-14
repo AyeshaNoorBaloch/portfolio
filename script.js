@@ -674,3 +674,29 @@ new Chart(recruitmentCtx, {
         }
     }
 });
+
+
+function sendWhatsAppMessage(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value;
+
+    const email =
+        document.getElementById("email").value;
+
+    const message =
+        document.getElementById("message").value;
+
+    const whatsappText =
+        `Hello Ayesha,%0A%0A` +
+        `Name: ${name}%0A` +
+        `Email: ${email}%0A%0A` +
+        `Project/Collaboration Details:%0A${message}`;
+
+    window.open(
+        `https://wa.me/923327887473?text=${whatsappText}`,
+        "_blank"
+    );
+}
