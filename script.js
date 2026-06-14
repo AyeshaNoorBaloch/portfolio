@@ -1,285 +1,597 @@
-// ==========================
-// KPI COUNTERS
-// ==========================
+// ======================================================
+// AYESHA NOOR BALOCH
+// HR ANALYTICS PORTFOLIO
+// ======================================================
 
-function animateCounter(id, target, suffix = "") {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const element = document.getElementById(id);
+    // ======================================================
+    // TYPING EFFECT
+    // ======================================================
 
-    if (!element) return;
+    const typingElement =
+    document.getElementById("typing-text");
 
-    let current = 0;
+    if (typingElement) {
 
-    const increment = target / 80;
+        const roles = [
+            "HR Analyst",
+            "People Analytics Specialist",
+            "Power BI Developer",
+            "Workforce Analytics Professional"
+        ];
 
-    const timer = setInterval(() => {
+        let roleIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
 
-        current += increment;
+        function typeEffect() {
 
-        if (current >= target) {
+            const currentRole =
+            roles[roleIndex];
 
-            current = target;
-            clearInterval(timer);
+            if (!deleting) {
 
+                typingElement.textContent =
+                currentRole.substring(
+                    0,
+                    charIndex + 1
+                );
+
+                charIndex++;
+
+                if (
+                    charIndex === currentRole.length
+                ) {
+
+                    deleting = true;
+
+                    setTimeout(
+                        typeEffect,
+                        2000
+                    );
+
+                    return;
+                }
+
+            } else {
+
+                typingElement.textContent =
+                currentRole.substring(
+                    0,
+                    charIndex - 1
+                );
+
+                charIndex--;
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    roleIndex++;
+
+                    if (
+                        roleIndex >= roles.length
+                    ) {
+                        roleIndex = 0;
+                    }
+                }
+            }
+
+            setTimeout(
+                typeEffect,
+                deleting ? 50 : 100
+            );
         }
 
-        element.innerText =
-            Math.floor(current) + suffix;
+        typeEffect();
+    }
 
-    }, 20);
+    // ======================================================
+    // KPI COUNTERS
+    // ======================================================
 
-}
+    const counters =
+    document.querySelectorAll(".counter");
 
-window.addEventListener("load", () => {
+    const counterObserver =
+    new IntersectionObserver(
 
-    animateCounter("employeeCounter", 1470);
-    animateCounter("attritionCounter", 16, "%");
-    animateCounter("retentionCounter", 84, "%");
-    animateCounter("engagementCounter", 78, "%");
+        entries => {
 
-});
+            entries.forEach(entry => {
 
+                if (
+                    entry.isIntersecting
+                ) {
 
-// ==========================
-// SCROLL REVEAL
-// ==========================
+                    const counter =
+                    entry.target;
 
-const revealElements = document.querySelectorAll(
-    ".kpi-card,.chart-card,.project-card,.cert-card,.timeline-item,.glass-card"
-);
+                    const target =
+                    +counter.dataset.target;
 
-function revealOnScroll() {
+                    let current = 0;
 
-    revealElements.forEach((element) => {
+                    const increment =
+                    target / 100;
 
-        const top =
-            element.getBoundingClientRect().top;
+                    const timer =
+                    setInterval(() => {
 
-        if (top < window.innerHeight - 100) {
+                        current += increment;
 
-            element.classList.add("active");
-            element.classList.add("reveal");
+                        if (
+                            current >= target
+                        ) {
 
-        }
+                            current =
+                            target;
 
-    });
+                            clearInterval(
+                                timer
+                            );
+                        }
 
-}
+                        const suffix =
+                        counter.dataset.suffix
+                        || "";
 
-window.addEventListener("scroll", revealOnScroll);
+                        counter.innerText =
+                        Math.floor(
+                            current
+                        ) + suffix;
 
-revealOnScroll();
+                    }, 20);
 
-
-// ==========================
-// CHART DEFAULTS
-// ==========================
-
-if (typeof Chart !== "undefined") {
-
-    Chart.defaults.color = "#CBD5E1";
-
-}
-
-
-// ==========================
-// EMPLOYEE ATTRITION CHART
-// ==========================
-
-const attritionCanvas =
-    document.getElementById("attritionChart");
-
-if (attritionCanvas && typeof Chart !== "undefined") {
-
-    new Chart(attritionCanvas, {
-
-        type: "doughnut",
-
-        data: {
-
-            labels: [
-                "Retained",
-                "Attrition"
-            ],
-
-            datasets: [{
-
-                data: [
-                    84,
-                    16
-                ],
-
-                backgroundColor: [
-                    "#10B981",
-                    "#EF4444"
-                ]
-
-            }]
-
-        },
-
-        options: {
-
-            responsive: true,
-
-            plugins: {
-
-                legend: {
-
-                    position: "bottom"
+                    counterObserver
+                    .unobserve(counter);
 
                 }
 
-            }
-
-        }
-
-    });
-
-}
-
-
-// ==========================
-// RECRUITMENT FUNNEL
-// ==========================
-
-const recruitmentCanvas =
-    document.getElementById("recruitmentChart");
-
-if (recruitmentCanvas && typeof Chart !== "undefined") {
-
-    new Chart(recruitmentCanvas, {
-
-        type: "bar",
-
-        data: {
-
-            labels: [
-                "Applications",
-                "Screened",
-                "Interviews",
-                "Offers",
-                "Hires"
-            ],
-
-            datasets: [{
-
-                label: "Candidates",
-
-                data: [
-                    1200,
-                    450,
-                    180,
-                    75,
-                    32
-                ]
-
-            }]
+            });
 
         },
 
-        options: {
-
-            responsive: true,
-
-            scales: {
-
-                y: {
-
-                    beginAtZero: true
-
-                }
-
-            }
-
+        {
+            threshold: 0.5
         }
 
-    });
+    );
 
-}
+    counters.forEach(counter => {
 
-
-// ==========================
-// NAVIGATION ACTIVE
-// ==========================
-
-const navLinks =
-    document.querySelectorAll(".nav-links a");
-
-navLinks.forEach(link => {
-
-    link.addEventListener("click", function () {
-
-        navLinks.forEach(
-            item => item.classList.remove("active")
+        counterObserver.observe(
+            counter
         );
 
-        this.classList.add("active");
+    });
+
+    // ======================================================
+    // SCROLL REVEAL
+    // ======================================================
+
+    const revealItems =
+    document.querySelectorAll(
+
+        ".glass-card, .kpi-card, .chart-card, .project-card, .cert-card, .timeline-item"
+
+    );
+
+    const revealObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.classList
+                    .add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+    revealItems.forEach(item => {
+
+        revealObserver.observe(item);
 
     });
 
-});
+    // ======================================================
+    // ACTIVE NAVIGATION
+    // ======================================================
 
+    const sections =
+    document.querySelectorAll("section");
 
-// ==========================
-// SMOOTH SCROLL
-// ==========================
+    const navLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    window.addEventListener(
 
-    anchor.addEventListener("click", function (e) {
+        "scroll",
 
-        e.preventDefault();
+        () => {
 
-        const target =
-            document.querySelector(
-                this.getAttribute("href")
-            );
+            let current = "";
 
-        if (target) {
+            sections.forEach(section => {
 
-            target.scrollIntoView({
+                const sectionTop =
+                section.offsetTop - 200;
 
-                behavior: "smooth"
+                if (
+                    window.scrollY >=
+                    sectionTop
+                ) {
+
+                    current =
+                    section.id;
+
+                }
+
+            });
+
+            navLinks.forEach(link => {
+
+                link.classList
+                .remove("active");
+
+                if (
+
+                    link.getAttribute(
+                        "href"
+                    ) === "#" + current
+
+                ) {
+
+                    link.classList
+                    .add("active");
+
+                }
 
             });
 
         }
 
+    );
+
+    // ======================================================
+    // SMOOTH SCROLL
+    // ======================================================
+
+    document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+
+            function(e){
+
+                e.preventDefault();
+
+                const target =
+                document.querySelector(
+                    this.getAttribute(
+                        "href"
+                    )
+                );
+
+                if(target){
+
+                    target.scrollIntoView({
+
+                        behavior:"smooth"
+
+                    });
+
+                }
+
+            }
+
+        );
+
     });
 
-});
+    // ======================================================
+    // BACK TO TOP BUTTON
+    // ======================================================
 
+    const topButton =
+    document.getElementById(
+        "backToTop"
+    );
 
-// ==========================
-// PROJECT IMAGE OPEN
-// ==========================
+    if(topButton){
 
-document.querySelectorAll(".project-card img")
-    .forEach(image => {
+        window.addEventListener(
 
-        image.addEventListener("click", () => {
+            "scroll",
 
-            window.open(
-                image.src,
-                "_blank"
+            () => {
+
+                if(
+                    window.scrollY > 500
+                ){
+
+                    topButton.classList
+                    .add("visible");
+
+                }else{
+
+                    topButton.classList
+                    .remove("visible");
+
+                }
+
+            }
+
+        );
+
+        topButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                window.scrollTo({
+
+                    top:0,
+
+                    behavior:"smooth"
+
+                });
+
+            }
+
+        );
+
+    }
+
+    // ======================================================
+    // PROJECT LIGHTBOX
+    // ======================================================
+
+    const projectImages =
+    document.querySelectorAll(
+        ".project-image"
+    );
+
+    const lightbox =
+    document.getElementById(
+        "lightbox"
+    );
+
+    const lightboxImage =
+    document.getElementById(
+        "lightbox-image"
+    );
+
+    if(
+        lightbox &&
+        lightboxImage
+    ){
+
+        projectImages.forEach(image => {
+
+            image.addEventListener(
+
+                "click",
+
+                () => {
+
+                    lightbox.style.display =
+                    "flex";
+
+                    lightboxImage.src =
+                    image.src;
+
+                }
+
             );
 
         });
 
-    });
+        lightbox.addEventListener(
 
+            "click",
 
-// ==========================
-// WHATSAPP CONTACT FORM
-// ==========================
+            () => {
 
+                lightbox.style.display =
+                "none";
 
+            }
 
-// ==========================
-// CONSOLE MESSAGE
-// ==========================
+        );
 
-console.log(
-    "Ayesha Noor Baloch | HR Analytics Portfolio"
-);
+    }
+
+    // ======================================================
+    // FOOTER YEAR
+    // ======================================================
+
+    const year =
+    document.getElementById(
+        "currentYear"
+    );
+
+    if(year){
+
+        year.textContent =
+        new Date()
+        .getFullYear();
+
+    }
+
+    // ======================================================
+    // CHART.JS
+    // ======================================================
+
+    if(typeof Chart !== "undefined"){
+
+        Chart.defaults.color =
+        "#CBD5E1";
+
+        // ATTRITION
+
+        const attritionCanvas =
+        document.getElementById(
+            "attritionChart"
+        );
+
+        if(attritionCanvas){
+
+            new Chart(
+
+                attritionCanvas,
+
+                {
+
+                    type:"doughnut",
+
+                    data:{
+
+                        labels:[
+                            "Retained",
+                            "Attrition"
+                        ],
+
+                        datasets:[{
+
+                            data:[
+                                84,
+                                16
+                            ],
+
+                            backgroundColor:[
+                                "#3B82F6",
+                                "#06B6D4"
+                            ],
+
+                            borderWidth:0
+
+                        }]
+
+                    },
+
+                    options:{
+
+                        responsive:true,
+
+                        plugins:{
+
+                            legend:{
+
+                                position:"bottom"
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            );
+
+        }
+
+        // RECRUITMENT
+
+        const recruitmentCanvas =
+        document.getElementById(
+            "recruitmentChart"
+        );
+
+        if(recruitmentCanvas){
+
+            new Chart(
+
+                recruitmentCanvas,
+
+                {
+
+                    type:"bar",
+
+                    data:{
+
+                        labels:[
+
+                            "Applications",
+                            "Screened",
+                            "Interviews",
+                            "Offers",
+                            "Hires"
+
+                        ],
+
+                        datasets:[{
+
+                            label:"Candidates",
+
+                            data:[
+
+                                1200,
+                                450,
+                                180,
+                                75,
+                                32
+
+                            ]
+
+                        }]
+
+                    },
+
+                    options:{
+
+                        responsive:true,
+
+                        scales:{
+
+                            y:{
+
+                                beginAtZero:true
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            );
+
+        }
+
+    }
+
+    // ======================================================
+    // CONSOLE
+    // ======================================================
+
+    console.log(
+        "Ayesha Noor Baloch | HR Analytics Portfolio Loaded"
+    );
+
+});
