@@ -3,524 +3,848 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Ayesha Noor Baloch | HR Analytics Portfolio</title>
-  <meta name="description" content="HR Analyst | People Analytics Specialist | Power BI | SQL | Workforce Analytics" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <meta
+    name="description"
+    content="HR Analytics Professional specializing in Power BI, SQL, Workforce Analytics, People Analytics, and Business Intelligence."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-follower" id="cursorFollower"></div>
+<!-- =========================
+     NAVBAR
+========================= -->
 
-<!-- PROGRESS BAR -->
-<div class="scroll-progress" id="scrollProgress"></div>
+<header class="header" id="header">
 
-<!-- NAVIGATION -->
-<nav class="navbar" id="navbar">
-  <a href="#" class="logo">ANB<span class="logo-dot">.</span></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about" class="nav-link">About</a></li>
-    <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
-    <li><a href="#projects" class="nav-link">Projects</a></li>
-    <li><a href="#certifications" class="nav-link">Certifications</a></li>
-    <li><a href="#education" class="nav-link">Journey</a></li>
-    <li><a href="#contact" class="nav-link">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Hire Me</a>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+  <nav class="navbar container">
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <ul>
-    <li><a href="#about" class="mobile-link">About</a></li>
-    <li><a href="#dashboard" class="mobile-link">Dashboard</a></li>
-    <li><a href="#projects" class="mobile-link">Projects</a></li>
-    <li><a href="#certifications" class="mobile-link">Certifications</a></li>
-    <li><a href="#education" class="mobile-link">Journey</a></li>
-    <li><a href="#contact" class="mobile-link">Contact</a></li>
-  </ul>
-</div>
+    <a href="#" class="logo">
+      Ayesha<span>.</span>
+    </a>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg">
-    <div class="grid-overlay"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
 
-  <div class="hero-inner">
-    <div class="hero-content" data-reveal>
-      <div class="hero-eyebrow">
-        <span class="pulse-dot"></span>
+    <a href="#contact" class="nav-btn">
+      Hire Me
+    </a>
+
+    <button class="mobile-toggle" id="mobileToggle">
+      ☰
+    </button>
+
+  </nav>
+
+</header>
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div class="hero-content">
+
+      <span class="hero-badge">
         Available for Opportunities
-      </div>
-      <h1 class="hero-name">
-        Ayesha<br/><em>Noor Baloch</em>
+      </span>
+
+      <h1>
+        Ayesha Noor Baloch
       </h1>
-      <div class="hero-role">
-        <span class="role-label">I turn workforce data into</span>
-        <div class="typing-wrapper">
-          <span id="typing-text" class="typed-role"></span><span class="cursor-blink">|</span>
-        </div>
-      </div>
-      <p class="hero-bio">
-        People Analytics Professional specializing in Power BI, SQL, and Tableau.
-        I build dashboards and data models that help HR leaders make faster,
-        more confident decisions about their people.
+
+      <h2>
+        HR Analytics Professional
+      </h2>
+
+      <p>
+        Transforming workforce data into actionable insights through
+        Power BI, SQL, Excel, and People Analytics.
+        I build dashboards and analytics solutions that support
+        smarter hiring, retention, and workforce planning decisions.
       </p>
-      <div class="hero-tools">
-        <span class="tool-pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3zm0 10h8v8H3zM13 3h8v8h-8zm0 10h8v8h-8z"/></svg>Power BI</span>
-        <span class="tool-pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7 3 3 5.7 3 9v6c0 3.3 4 6 9 6s9-2.7 9-6V9c0-3.3-4-6-9-6z"/></svg>SQL</span>
-        <span class="tool-pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>Excel</span>
-        <span class="tool-pill">Tableau</span>
-        <span class="tool-pill">HR Analytics</span>
-        <span class="tool-pill">People Analytics</span>
-      </div>
+
       <div class="hero-actions">
-        <a href="#projects" class="btn-primary">View Projects <span class="arrow">→</span></a>
-        <a href="Resume.pdf" target="_blank" class="btn-ghost">📄 Download CV</a>
-        <a href="https://www.linkedin.com/in/ayesha-noor-baloch" target="_blank" class="btn-ghost">🔗 LinkedIn</a>
+
+        <a href="#projects" class="btn btn-primary">
+          View Projects
+        </a>
+
+        <a href="Resume.pdf" target="_blank" class="btn btn-outline">
+          Download Resume
+        </a>
+
       </div>
+
+      <div class="hero-skills">
+
+        <span>Power BI</span>
+        <span>SQL</span>
+        <span>Excel</span>
+        <span>Tableau</span>
+        <span>HR Analytics</span>
+        <span>People Analytics</span>
+
+      </div>
+
     </div>
 
-    <div class="hero-visual" data-reveal data-delay="200">
-      <div class="profile-ring">
-        <div class="profile-card">
-          <div class="profile-avatar">ANB</div>
-          <h3>HR Analytics Professional</h3>
-          <p class="profile-sub">Power BI · SQL · Excel · Tableau</p>
-          <div class="profile-stats">
-            <div class="stat">
-              <strong class="counter" data-target="5">0</strong><span>+</span>
-              <small>Projects</small>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <strong class="counter" data-target="6">0</strong><span>+</span>
-              <small>Certs</small>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <strong class="counter" data-target="6">0</strong><span>+</span>
-              <small>Tools</small>
-            </div>
+    <div class="hero-card">
+
+      <div class="profile-circle">
+        ANB
+      </div>
+
+      <h3>HR Analytics Specialist</h3>
+
+      <p>
+        Data-driven workforce insights for modern organizations.
+      </p>
+
+      <div class="hero-stats">
+
+        <div>
+          <h4 class="counter" data-target="5">0</h4>
+          <span>Projects</span>
+        </div>
+
+        <div>
+          <h4 class="counter" data-target="6">0</h4>
+          <span>Certifications</span>
+        </div>
+
+        <div>
+          <h4 class="counter" data-target="6">0</h4>
+          <span>Tools</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     ABOUT SECTION
+========================= -->
+
+<section id="about" class="section">
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <span>About Me</span>
+
+      <h2>
+        Turning Workforce Data Into Strategic Decisions
+      </h2>
+
+    </div>
+
+    <div class="about-grid">
+
+      <div>
+
+        <p>
+          I am an aspiring HR Analytics and People Analytics
+          professional with expertise in workforce reporting,
+          dashboard development, and business intelligence.
+        </p>
+
+        <p>
+          My focus is on helping organizations understand
+          employee trends, improve retention, optimize
+          recruitment pipelines, and create data-driven
+          HR strategies.
+        </p>
+
+      </div>
+
+      <div class="skills-box">
+
+        <div class="skill-item">
+          <div class="skill-top">
+            <span>Power BI</span>
+            <span>90%</span>
+          </div>
+          <div class="skill-bar">
+            <div style="width:90%"></div>
           </div>
         </div>
-        <div class="floating-badge badge-1">
-          <span class="badge-icon">📊</span>
-          <div><strong>Power BI</strong><small>Certified</small></div>
+
+        <div class="skill-item">
+          <div class="skill-top">
+            <span>SQL</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div style="width:85%"></div>
+          </div>
         </div>
-        <div class="floating-badge badge-2">
-          <span class="badge-icon">🎯</span>
-          <div><strong>HR Analytics</strong><small>Specialist</small></div>
+
+        <div class="skill-item">
+          <div class="skill-top">
+            <span>Excel</span>
+            <span>92%</span>
+          </div>
+          <div class="skill-bar">
+            <div style="width:92%"></div>
+          </div>
         </div>
-        <div class="floating-badge badge-3">
-          <span class="badge-icon">🔍</span>
-          <div><strong>SQL</strong><small>Analyst</small></div>
+
+        <div class="skill-item">
+          <div class="skill-top">
+            <span>Tableau</span>
+            <span>80%</span>
+          </div>
+          <div class="skill-bar">
+            <div style="width:80%"></div>
+          </div>
         </div>
+
       </div>
+
     </div>
+
   </div>
 
-  <div class="hero-scroll-hint">
-    <span>Scroll to explore</span>
-    <div class="scroll-line"></div>
-  </div>
 </section>
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="section">
-  <div class="section-header" data-reveal>
-    <span class="section-label">Live Analytics</span>
-    <h2 class="section-title">Executive HR Dashboard</h2>
-    <p class="section-sub">Workforce intelligence and HR performance metrics</p>
-  </div>
+<!-- =========================
+     HR DASHBOARD
+========================= -->
 
-  <div class="kpi-row" data-reveal>
-    <div class="kpi-tile">
-      <div class="kpi-icon">👥</div>
-      <div class="kpi-value"><span class="counter" data-target="1470">0</span></div>
-      <div class="kpi-label">Total Employees</div>
-      <div class="kpi-trend up">↑ 4.2% this quarter</div>
-    </div>
-    <div class="kpi-tile accent">
-      <div class="kpi-icon">📉</div>
-      <div class="kpi-value"><span class="counter" data-target="16">0</span><span>%</span></div>
-      <div class="kpi-label">Attrition Rate</div>
-      <div class="kpi-trend down">↓ 2.1% vs last year</div>
-    </div>
-    <div class="kpi-tile">
-      <div class="kpi-icon">💚</div>
-      <div class="kpi-value"><span class="counter" data-target="84">0</span><span>%</span></div>
-      <div class="kpi-label">Retention Rate</div>
-      <div class="kpi-trend up">↑ 2.1% improvement</div>
-    </div>
-    <div class="kpi-tile">
-      <div class="kpi-icon">⭐</div>
-      <div class="kpi-value"><span class="counter" data-target="78">0</span><span>%</span></div>
-      <div class="kpi-label">Engagement Score</div>
-      <div class="kpi-trend up">↑ Above industry avg</div>
-    </div>
-  </div>
+<section id="dashboard" class="section bg-light">
 
-  <div class="charts-row" data-reveal>
-    <div class="chart-panel">
-      <div class="chart-header">
-        <h3>Employee Attrition Breakdown</h3>
-        <span class="chart-badge">Live Data</span>
+  <div class="container">
+
+    <div class="section-header">
+
+      <span>Executive Dashboard</span>
+
+      <h2>
+        HR Analytics Overview
+      </h2>
+
+    </div>
+
+    <div class="kpi-grid">
+
+      <div class="kpi-card">
+
+        <h3 class="counter" data-target="1470">0</h3>
+
+        <p>Total Employees</p>
+
       </div>
-      <canvas id="attritionChart" height="260"></canvas>
+
+      <div class="kpi-card">
+
+        <h3>
+          <span class="counter" data-target="16">0</span>%
+        </h3>
+
+        <p>Attrition Rate</p>
+
+      </div>
+
+      <div class="kpi-card">
+
+        <h3>
+          <span class="counter" data-target="84">0</span>%
+        </h3>
+
+        <p>Retention Rate</p>
+
+      </div>
+
+      <div class="kpi-card">
+
+        <h3>
+          <span class="counter" data-target="78">0</span>%
+        </h3>
+
+        <p>Engagement Score</p>
+
+      </div>
+
     </div>
-    <div class="chart-panel">
-      <div class="chart-header">
+
+    <div class="dashboard-grid">
+
+      <div class="chart-card">
+
+        <h3>Employee Attrition</h3>
+
+        <canvas id="attritionChart"></canvas>
+
+      </div>
+
+      <div class="chart-card">
+
         <h3>Recruitment Funnel</h3>
-        <span class="chart-badge">2024</span>
+
+        <canvas id="recruitmentChart"></canvas>
+
       </div>
-      <canvas id="recruitmentChart" height="260"></canvas>
-    </div>
-    <div class="chart-panel">
-      <div class="chart-header">
-        <h3>Dept. Headcount Distribution</h3>
-        <span class="chart-badge">Q4</span>
+
+      <div class="chart-card">
+
+        <h3>Department Headcount</h3>
+
+        <canvas id="departmentChart"></canvas>
+
       </div>
-      <canvas id="deptChart" height="260"></canvas>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="section section-alt">
-  <div class="about-layout">
-    <div class="about-left" data-reveal>
-      <span class="section-label">Who I Am</span>
-      <h2 class="section-title">Turning People Data<br/>into <em>Strategic Value</em></h2>
-      <p class="about-text">
-        I'm an aspiring HR Analyst and People Analytics Professional who bridges the gap
-        between raw workforce data and executive decisions. My toolkit spans Power BI,
-        SQL, Excel, Tableau, and R — applied to problems like retention risk modeling,
-        recruitment funnel optimization, and compensation benchmarking.
-      </p>
-      <p class="about-text">
-        Through hands-on projects and industry certifications, I've developed a sharp
-        eye for what the data is actually saying — and how to communicate it to
-        stakeholders who don't speak SQL.
-      </p>
-      <div class="about-skills">
-        <div class="skill-bar-item">
-          <div class="skill-info"><span>Power BI</span><span>90%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-info"><span>SQL</span><span>85%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-info"><span>Excel / Advanced Analytics</span><span>92%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-width="92"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-info"><span>Tableau</span><span>80%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-width="80"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-info"><span>Python / R</span><span>75%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-width="75"></div></div>
-        </div>
-      </div>
-    </div>
-    <div class="about-right" data-reveal data-delay="150">
-      <div class="expertise-grid">
-        <div class="expertise-card">
-          <div class="exp-icon">📊</div>
-          <h4>Workforce Analytics</h4>
-          <p>Headcount trends, attrition modeling, and predictive retention analysis.</p>
-        </div>
-        <div class="expertise-card">
-          <div class="exp-icon">🎯</div>
-          <h4>Recruitment Analytics</h4>
-          <p>Funnel conversion, time-to-hire, and source-of-hire effectiveness.</p>
-        </div>
-        <div class="expertise-card">
-          <div class="exp-icon">💰</div>
-          <h4>Compensation Analysis</h4>
-          <p>Pay equity studies, salary benchmarking, and total rewards dashboards.</p>
-        </div>
-        <div class="expertise-card">
-          <div class="exp-icon">📈</div>
-          <h4>HR Dashboard Dev</h4>
-          <p>Executive-ready Power BI and Tableau dashboards with real-time KPIs.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- =========================
+     PROJECTS
+========================= -->
 
-<!-- PROJECTS -->
 <section id="projects" class="section">
-  <div class="section-header" data-reveal>
-    <span class="section-label">Work</span>
-    <h2 class="section-title">Featured Analytics Projects</h2>
-    <p class="section-sub">Interactive dashboards and workforce intelligence solutions</p>
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <span>Projects</span>
+
+      <h2>
+        Featured Analytics Projects
+      </h2>
+
+    </div>
+
+    <div class="project-grid">
+
+      <div class="project-card">
+
+        <img
+          src="attrition dashboard.png"
+          alt="Employee Attrition Dashboard"
+        >
+
+        <div class="project-content">
+
+          <h3>
+            Employee Attrition Dashboard
+          </h3>
+
+          <p>
+            Built a Power BI dashboard analyzing
+            employee turnover trends and retention
+            drivers across departments.
+          </p>
+
+          <div class="project-tags">
+            <span>Power BI</span>
+            <span>DAX</span>
+            <span>HR Analytics</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="project-card">
+
+        <img
+          src="HR Analytics.png"
+          alt="HR Analytics Dashboard"
+        >
+
+        <div class="project-content">
+
+          <h3>
+            HR Analytics Dashboard
+          </h3>
+
+          <p>
+            Workforce demographics, HR KPIs,
+            salary analysis and executive reporting.
+          </p>
+
+          <div class="project-tags">
+            <span>SQL</span>
+            <span>Power BI</span>
+            <span>Excel</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="project-card">
+
+        <img
+          src="compensation.webp"
+          alt="Compensation Analytics"
+        >
+
+        <div class="project-content">
+
+          <h3>
+            Compensation Analytics Dashboard
+          </h3>
+
+          <p>
+            Compensation benchmarking, payroll
+            analysis, and pay equity insights.
+          </p>
+
+          <div class="project-tags">
+            <span>Tableau</span>
+            <span>SQL</span>
+            <span>Excel</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="project-card">
+
+        <img
+          src="engagement.png"
+          alt="Engagement Dashboard"
+        >
+
+        <div class="project-content">
+
+          <h3>
+            Employee Engagement Dashboard
+          </h3>
+
+          <p>
+            Survey analytics and employee
+            satisfaction trend reporting.
+          </p>
+
+          <div class="project-tags">
+            <span>Power BI</span>
+            <span>R</span>
+            <span>Survey Analytics</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="projects-grid" data-reveal>
-
-    <div class="project-card project-featured">
-      <div class="project-img-wrap">
-        <img src="attrition dashboard.png" alt="Attrition Dashboard" class="project-img" loading="lazy" />
-        <div class="project-overlay">
-          <span class="overlay-label">View Details</span>
-        </div>
-        <div class="project-tag">Power BI</div>
-      </div>
-      <div class="project-body">
-        <h3>Employee Attrition Dashboard</h3>
-        <p>Analysis of turnover trends, retention drivers, and attrition risk scoring across departments using Power BI and DAX.</p>
-        <div class="project-meta">
-          <span>Power BI</span><span>DAX</span><span>HR Analytics</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-img-wrap">
-        <img src="HR Analytics.png" alt="HR Analytics Dashboard" class="project-img" loading="lazy" />
-        <div class="project-overlay">
-          <span class="overlay-label">View Details</span>
-        </div>
-        <div class="project-tag">Analytics</div>
-      </div>
-      <div class="project-body">
-        <h3>HR Analytics Dashboard</h3>
-        <p>Workforce demographics, salary analysis, and HR KPIs for executive reporting.</p>
-        <div class="project-meta">
-          <span>SQL</span><span>Power BI</span><span>Excel</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-img-wrap">
-        <img src="compensation.webp" alt="Compensation Dashboard" class="project-img" loading="lazy" />
-        <div class="project-overlay">
-          <span class="overlay-label">View Details</span>
-        </div>
-        <div class="project-tag">Compensation</div>
-      </div>
-      <div class="project-body">
-        <h3>Compensation Analytics Dashboard</h3>
-        <p>Payroll insights, pay equity analysis, and compensation planning across roles and bands.</p>
-        <div class="project-meta">
-          <span>Tableau</span><span>Excel</span><span>SQL</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-img-wrap">
-        <img src="engagement.png" alt="Engagement Dashboard" class="project-img" loading="lazy" />
-        <div class="project-overlay">
-          <span class="overlay-label">View Details</span>
-        </div>
-        <div class="project-tag">Engagement</div>
-      </div>
-      <div class="project-body">
-        <h3>Employee Engagement Dashboard</h3>
-        <p>Satisfaction scores, engagement trend analysis, and pulse survey results visualization.</p>
-        <div class="project-meta">
-          <span>Power BI</span><span>Survey Data</span><span>R</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
 </section>
+<!-- =========================
+     CERTIFICATIONS
+========================= -->
 
-<!-- CERTIFICATIONS -->
-<section id="certifications" class="section section-alt">
-  <div class="section-header" data-reveal>
-    <span class="section-label">Credentials</span>
-    <h2 class="section-title">Professional Certifications</h2>
-  </div>
+<section id="certifications" class="section bg-light">
 
-  <div class="cert-grid" data-reveal>
+  <div class="container">
 
-    <a href="Associate%20Data%20Analyst%20in%20SQL.pdf" target="_blank" class="cert-card">
-      <div class="cert-logo sql">SQL</div>
-      <div class="cert-info">
-        <h4>Associate Data Analyst in SQL</h4>
-        <span class="cert-issuer">DataCamp</span>
-      </div>
-      <span class="cert-arrow">↗</span>
-    </a>
+    <div class="section-header">
 
-    <a href="Data%20Analyst%20in%20Python.pdf" target="_blank" class="cert-card">
-      <div class="cert-logo py">Py</div>
-      <div class="cert-info">
-        <h4>Data Analyst in Python</h4>
-        <span class="cert-issuer">DataCamp</span>
-      </div>
-      <span class="cert-arrow">↗</span>
-    </a>
+      <span>Certifications</span>
 
-    <a href="Data%20Analyst%20in%20Power%20BI.pdf" target="_blank" class="cert-card">
-      <div class="cert-logo pbi">PBI</div>
-      <div class="cert-info">
-        <h4>Data Analyst in Power BI</h4>
-        <span class="cert-issuer">DataCamp</span>
-      </div>
-      <span class="cert-arrow">↗</span>
-    </a>
+      <h2>
+        Professional Credentials
+      </h2>
 
-    <a href="Data%20Analyst%20in%20Tableau.pdf" target="_blank" class="cert-card">
-      <div class="cert-logo tab">Tab</div>
-      <div class="cert-info">
-        <h4>Data Analyst in Tableau</h4>
-        <span class="cert-issuer">DataCamp</span>
-      </div>
-      <span class="cert-arrow">↗</span>
-    </a>
-
-    <a href="Data%20Analyst%20in%20R.pdf" target="_blank" class="cert-card">
-      <div class="cert-logo r">R</div>
-      <div class="cert-info">
-        <h4>Data Analyst in R</h4>
-        <span class="cert-issuer">DataCamp</span>
-      </div>
-      <span class="cert-arrow">↗</span>
-    </a>
-
-    <a href="CertificateOfCompletion_Become%20a%20Data%20Analyst.pdf" target="_blank" class="cert-card">
-      <div class="cert-logo da">DA</div>
-      <div class="cert-info">
-        <h4>Become a Data Analyst</h4>
-        <span class="cert-issuer">LinkedIn Learning</span>
-      </div>
-      <span class="cert-arrow">↗</span>
-    </a>
-
-  </div>
-</section>
-
-<!-- EDUCATION / JOURNEY -->
-<section id="education" class="section">
-  <div class="section-header" data-reveal>
-    <span class="section-label">Background</span>
-    <h2 class="section-title">Education & Journey</h2>
-  </div>
-
-  <div class="timeline-wrap" data-reveal>
-
-    <div class="tl-item">
-      <div class="tl-dot active"></div>
-      <div class="tl-card">
-        <span class="tl-date">2024 – Present</span>
-        <h3>HR Analytics & Data Analytics Certifications</h3>
-        <p>SQL · Power BI · Python · Tableau · R · Data Analysis</p>
-        <div class="tl-badges">
-          <span>DataCamp</span><span>LinkedIn Learning</span>
-        </div>
-      </div>
     </div>
 
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <span class="tl-date">A Levels</span>
-        <h3>Cambridge A Levels</h3>
-        <p>Accounting · Business · Computer Science</p>
-      </div>
-    </div>
+    <div class="cert-grid">
 
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <span class="tl-date">O Levels</span>
-        <h3>Cambridge O Levels</h3>
-        <p>Accounting · Business · Computer Science · Mathematics · English</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section section-alt">
-  <div class="section-header" data-reveal>
-    <span class="section-label">Get in Touch</span>
-    <h2 class="section-title">Let's Work Together</h2>
-    <p class="section-sub">Open to HR Analytics, Data Analytics, and Business Intelligence roles</p>
-  </div>
-
-  <div class="contact-layout" data-reveal>
-    <div class="contact-card">
-      <div class="contact-item">
-        <div class="contact-icon">✉️</div>
-        <div>
-          <label>Email</label>
-          <a href="mailto:noorbalochayesha@gmail.com">noorbalochayesha@gmail.com</a>
+      <a
+        href="Associate Data Analyst in SQL.pdf"
+        target="_blank"
+        class="cert-card"
+      >
+        <div class="cert-icon">
+          SQL
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">💬</div>
+
         <div>
-          <label>WhatsApp</label>
-          <a href="https://wa.me/923327887473" target="_blank">+92 332 7887473</a>
+          <h3>Associate Data Analyst in SQL</h3>
+          <p>DataCamp</p>
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">🔗</div>
-        <div>
-          <label>LinkedIn</label>
-          <a href="https://www.linkedin.com/in/ayesha-noor-baloch" target="_blank">ayesha-noor-baloch</a>
-        </div>
-      </div>
-      <a href="https://www.linkedin.com/in/ayesha-noor-baloch" target="_blank" class="btn-primary contact-btn">
-        View LinkedIn Profile <span class="arrow">→</span>
       </a>
+
+      <a
+        href="Data Analyst in Python.pdf"
+        target="_blank"
+        class="cert-card"
+      >
+        <div class="cert-icon">
+          PY
+        </div>
+
+        <div>
+          <h3>Data Analyst in Python</h3>
+          <p>DataCamp</p>
+        </div>
+      </a>
+
+      <a
+        href="Data Analyst in Power BI.pdf"
+        target="_blank"
+        class="cert-card"
+      >
+        <div class="cert-icon">
+          PBI
+        </div>
+
+        <div>
+          <h3>Data Analyst in Power BI</h3>
+          <p>DataCamp</p>
+        </div>
+      </a>
+
+      <a
+        href="Data Analyst in Tableau.pdf"
+        target="_blank"
+        class="cert-card"
+      >
+        <div class="cert-icon">
+          TAB
+        </div>
+
+        <div>
+          <h3>Data Analyst in Tableau</h3>
+          <p>DataCamp</p>
+        </div>
+      </a>
+
+      <a
+        href="Data Analyst in R.pdf"
+        target="_blank"
+        class="cert-card"
+      >
+        <div class="cert-icon">
+          R
+        </div>
+
+        <div>
+          <h3>Data Analyst in R</h3>
+          <p>DataCamp</p>
+        </div>
+      </a>
+
+      <a
+        href="CertificateOfCompletion_Become a Data Analyst.pdf"
+        target="_blank"
+        class="cert-card"
+      >
+        <div class="cert-icon">
+          DA
+        </div>
+
+        <div>
+          <h3>Become a Data Analyst</h3>
+          <p>LinkedIn Learning</p>
+        </div>
+      </a>
+
     </div>
 
-    <div class="contact-highlight">
-      <div class="highlight-inner">
-        <h3>Currently Available</h3>
-        <p>Open to full-time, part-time, and freelance opportunities in HR Analytics, People Analytics, and BI Development.</p>
-        <ul class="avail-list">
-          <li>✅ HR Analytics Analyst</li>
-          <li>✅ People Analytics Specialist</li>
-          <li>✅ Power BI / Tableau Developer</li>
-          <li>✅ Data Analyst (HR domain)</li>
-        </ul>
-      </div>
-    </div>
   </div>
+
 </section>
 
-<!-- BACK TO TOP -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+<!-- =========================
+     JOURNEY
+========================= -->
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <span class="footer-logo">ANB<span class="logo-dot">.</span></span>
-    <p>© <span id="currentYear"></span> Ayesha Noor Baloch · HR Analytics Portfolio</p>
-    <div class="footer-links">
-      <a href="https://www.linkedin.com/in/ayesha-noor-baloch" target="_blank">LinkedIn</a>
-      <a href="mailto:noorbalochayesha@gmail.com">Email</a>
-      <a href="Resume.pdf" target="_blank">Resume</a>
+<section id="journey" class="section">
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <span>Education & Journey</span>
+
+      <h2>
+        Academic Background
+      </h2>
+
     </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+
+          <span class="timeline-date">
+            2024 – Present
+          </span>
+
+          <h3>
+            HR Analytics & Data Analytics Certifications
+          </h3>
+
+          <p>
+            Power BI, SQL, Tableau, Python, R,
+            Workforce Analytics, Business Intelligence.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+
+          <span class="timeline-date">
+            A Levels
+          </span>
+
+          <h3>
+            Cambridge A Levels
+          </h3>
+
+          <p>
+            Accounting, Business Studies,
+            Computer Science.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+
+          <span class="timeline-date">
+            O Levels
+          </span>
+
+          <h3>
+            Cambridge O Levels
+          </h3>
+
+          <p>
+            Accounting, Business, Computer Science,
+            Mathematics, English.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
+</section>
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="section bg-light">
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <span>Contact</span>
+
+      <h2>
+        Let's Work Together
+      </h2>
+
+      <p>
+        Open to HR Analytics, People Analytics,
+        Data Analytics and Business Intelligence opportunities.
+      </p>
+
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-card">
+
+        <h3>
+          Contact Information
+        </h3>
+
+        <div class="contact-item">
+
+          <strong>Email</strong>
+
+          <a href="mailto:noorbalochayesha@gmail.com">
+            noorbalochayesha@gmail.com
+          </a>
+
+        </div>
+
+        <div class="contact-item">
+
+          <strong>WhatsApp</strong>
+
+          <a
+            href="https://wa.me/923327887473"
+            target="_blank"
+          >
+            +92 332 7887473
+          </a>
+
+        </div>
+
+        <div class="contact-item">
+
+          <strong>LinkedIn</strong>
+
+          <a
+            href="https://www.linkedin.com/in/ayesha-noor-baloch"
+            target="_blank"
+          >
+            linkedin.com/in/ayesha-noor-baloch
+          </a>
+
+        </div>
+
+        <div class="contact-actions">
+
+          <a
+            href="Resume.pdf"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            Download Resume
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="availability-card">
+
+        <h3>
+          Currently Available
+        </h3>
+
+        <p>
+          Seeking opportunities where I can apply
+          HR Analytics, People Analytics, Power BI,
+          SQL and Business Intelligence skills to
+          support organizational decision-making.
+        </p>
+
+        <ul>
+
+          <li>HR Analytics Analyst</li>
+
+          <li>People Analytics Specialist</li>
+
+          <li>Business Intelligence Analyst</li>
+
+          <li>Power BI Developer</li>
+
+          <li>Data Analyst</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+  <div class="container footer-content">
+
+    <div>
+
+      <h3>
+        Ayesha Noor Baloch
+      </h3>
+
+      <p>
+        HR Analytics • Power BI • SQL • Workforce Analytics
+      </p>
+
+    </div>
+
+    <div class="footer-links">
+
+      <a href="#about">About</a>
+
+      <a href="#projects">Projects</a>
+
+      <a href="#certifications">Certifications</a>
+
+      <a href="#contact">Contact</a>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+
+    © 2026 Ayesha Noor Baloch. All Rights Reserved.
+
+  </div>
+
 </footer>
 
+<!-- =========================
+     BACK TO TOP
+========================= -->
+
+<button id="backToTop" class="back-to-top">
+  ↑
+</button>
+
 <script src="script.js"></script>
+
 </body>
 </html>
