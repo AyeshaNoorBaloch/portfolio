@@ -1,593 +1,440 @@
-/* ==========================================
-MOBILE MENU
-========================================== */
+/* ==================================================
+   MOBILE MENU
+================================================== */
 
-const mobileToggle =
-document.querySelector(".mobile-toggle");
+const mobileToggle = document.querySelector(".mobile-toggle");
+const navMenu = document.querySelector(".nav-menu");
 
-const navMenu =
-document.querySelector(".nav-menu");
+if (mobileToggle && navMenu) {
 
-if (mobileToggle) {
+    mobileToggle.addEventListener("click", () => {
 
-mobileToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
 
-navMenu.classList.toggle("active");
+        const icon = mobileToggle.querySelector("i");
 
-mobileToggle.textContent =
-navMenu.classList.contains("active")
-? "✕"
-: "☰";
+        if (navMenu.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+        } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+        }
 
-});
+    });
 
 }
 
-/* ==========================================
-CLOSE MOBILE MENU
-========================================== */
+/* ==================================================
+   CLOSE MOBILE MENU ON LINK CLICK
+================================================== */
+
+document.querySelectorAll(".nav-menu a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navMenu?.classList.remove("active");
+
+        const icon = mobileToggle?.querySelector("i");
+
+        if (icon) {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+        }
+
+    });
+
+});
+
+/* ==================================================
+   DARK MODE TOGGLE
+================================================== */
+
+const themeToggle = document.getElementById("themeToggle");
+
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+    document.body.classList.add("light");
+    if (themeToggle) themeToggle.textContent = "☀️";
+}
+
+themeToggle?.addEventListener("click", () => {
+
+    document.body.classList.toggle("light");
+
+    const isLight =
+        document.body.classList.contains("light");
+
+    localStorage.setItem(
+        "theme",
+        isLight ? "light" : "dark"
+    );
+
+    themeToggle.textContent =
+        isLight ? "☀️" : "🌙";
+
+});
+
+/* ==================================================
+   SMOOTH SCROLLING
+================================================== */
 
 document
-.querySelectorAll(".nav-menu a")
-.forEach(link => {
+    .querySelectorAll('a[href^="#"]')
+    .forEach(anchor => {
 
-link.addEventListener("click", () => {
+        anchor.addEventListener("click", function (e) {
 
-if(navMenu){
+            e.preventDefault();
 
-navMenu.classList.remove("active");
+            const target =
+                document.querySelector(
+                    this.getAttribute("href")
+                );
 
-}
+            if (target) {
 
-if(mobileToggle){
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
 
-mobileToggle.textContent = "☰";
+            }
 
-}
+        });
 
-});
+    });
 
-});
-
-/* ==========================================
-DARK MODE TOGGLE
-========================================== */
-
-const themeToggle =
-document.getElementById("themeToggle");
-
-const savedTheme =
-localStorage.getItem("theme");
-
-if(savedTheme === "dark"){
-
-document.body.classList.add("dark");
-
-if(themeToggle){
-
-themeToggle.textContent = "☀️";
-
-}
-
-}
-
-if(themeToggle){
-
-themeToggle.addEventListener("click", () => {
-
-document.body.classList.toggle("dark");
-
-const darkMode =
-document.body.classList.contains("dark");
-
-themeToggle.textContent =
-darkMode ? "☀️" : "🌙";
-
-localStorage.setItem(
-"theme",
-darkMode ? "dark" : "light"
-);
-
-});
-
-}
-
-/* ==========================================
-SMOOTH SCROLL
-========================================== */
-
-document
-.querySelectorAll('a[href^="#"]')
-.forEach(anchor => {
-
-anchor.addEventListener("click", function(e){
-
-e.preventDefault();
-
-const target =
-document.querySelector(
-this.getAttribute("href")
-);
-
-if(target){
-
-target.scrollIntoView({
-
-behavior:"smooth",
-block:"start"
-
-});
-
-}
-
-});
-
-});
-
-/* ==========================================
-ACTIVE NAVIGATION
-========================================== */
-
-const sections =
-document.querySelectorAll("section");
-
-const navLinks =
-document.querySelectorAll(".nav-menu a");
-
-window.addEventListener("scroll", () => {
-
-let current = "";
-
-sections.forEach(section => {
-
-const sectionTop =
-section.offsetTop - 150;
-
-if(window.scrollY >= sectionTop){
-
-current =
-section.getAttribute("id");
-
-}
-
-});
-
-navLinks.forEach(link => {
-
-link.classList.remove("active");
-
-if(
-link.getAttribute("href")
-=== `#${current}`
-){
-
-link.classList.add("active");
-
-}
-
-});
-
-});
-
-/* ==========================================
-NAVBAR SHADOW
-========================================== */
-
-const header =
-document.querySelector(".header");
-
-window.addEventListener("scroll", () => {
-
-if(window.scrollY > 50){
-
-header.style.boxShadow =
-"0 10px 30px rgba(0,0,0,.08)";
-
-}else{
-
-header.style.boxShadow =
-"none";
-
-}
-
-});
-
-/* ==========================================
-BACK TO TOP BUTTON
-========================================== */
-
-const backToTop =
-document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-
-if(window.scrollY > 500){
-
-backToTop.style.display =
-"flex";
-
-}else{
-
-backToTop.style.display =
-"none";
-
-}
-
-});
-
-if(backToTop){
-
-backToTop.addEventListener("click", () => {
-
-window.scrollTo({
-
-top:0,
-behavior:"smooth"
-
-});
-
-});
-
-}
-
-/* ==========================================
-TYPING EFFECT
-========================================== */
+/* ==================================================
+   TYPING EFFECT
+================================================== */
 
 const typingElement =
-document.querySelector(".typing-text");
+    document.querySelector(".typing-text");
 
-if(typingElement){
+if (typingElement) {
 
-const roles = [
+    const roles = [
 
-"HR Analytics Professional",
-"Power BI Developer",
-"Data Analyst",
-"Creative Designer",
-"Business Intelligence Enthusiast"
+        "HR Analytics Professional",
 
-];
+        "Aspiring Data Analyst",
 
-let roleIndex = 0;
-let charIndex = 0;
-let deleting = false;
+        "Power BI Dashboard Developer",
 
-function typeEffect(){
+        "Business Intelligence Enthusiast",
 
-const currentRole =
-roles[roleIndex];
+        "Workforce Analytics Learner"
 
-if(!deleting){
+    ];
 
-typingElement.textContent =
-currentRole.substring(
-0,
-charIndex + 1
-);
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
 
-charIndex++;
+    function typeEffect() {
 
-if(
-charIndex === currentRole.length
-){
+        const currentRole =
+            roles[roleIndex];
 
-deleting = true;
+        if (!deleting) {
 
-setTimeout(
-typeEffect,
-1500
-);
+            typingElement.textContent =
+                currentRole.substring(
+                    0,
+                    charIndex + 1
+                );
 
-return;
+            charIndex++;
 
-}
+            if (
+                charIndex === currentRole.length
+            ) {
 
-}else{
+                deleting = true;
 
-typingElement.textContent =
-currentRole.substring(
-0,
-charIndex - 1
-);
+                setTimeout(
+                    typeEffect,
+                    1500
+                );
 
-charIndex--;
+                return;
+            }
 
-if(charIndex === 0){
+        } else {
 
-deleting = false;
+            typingElement.textContent =
+                currentRole.substring(
+                    0,
+                    charIndex - 1
+                );
 
-roleIndex =
-(roleIndex + 1)
-%
-roles.length;
+            charIndex--;
 
-}
+            if (charIndex === 0) {
 
-}
+                deleting = false;
 
-setTimeout(
+                roleIndex =
+                    (roleIndex + 1) %
+                    roles.length;
 
-typeEffect,
+            }
 
-deleting
-? 60
-: 120
+        }
 
-);
+        setTimeout(
+            typeEffect,
+            deleting ? 60 : 100
+        );
 
-}
+    }
 
-typeEffect();
+    typeEffect();
 
 }
 
-/* ==========================================
-COUNTER ANIMATION
-========================================== */
+/* ==================================================
+   COUNTER ANIMATION
+================================================== */
 
 const counters =
-document.querySelectorAll(".counter");
+    document.querySelectorAll(".counter");
 
 const counterObserver =
-new IntersectionObserver(
+    new IntersectionObserver(
+        entries => {
 
-entries => {
+            entries.forEach(entry => {
 
-entries.forEach(entry => {
+                if (entry.isIntersecting) {
 
-if(entry.isIntersecting){
+                    const counter =
+                        entry.target;
 
-const counter =
-entry.target;
+                    const target =
+                        +counter.dataset.target;
 
-const target =
-+counter.dataset.target;
+                    let current = 0;
 
-let count = 0;
+                    const increment =
+                        target / 80;
 
-const updateCounter = () => {
+                    const updateCounter =
+                        () => {
 
-const increment =
-Math.ceil(target / 100);
+                            if (
+                                current < target
+                            ) {
 
-count += increment;
+                                current += increment;
 
-if(count >= target){
+                                counter.textContent =
+                                    Math.ceil(current);
 
-counter.textContent =
-target;
+                                requestAnimationFrame(
+                                    updateCounter
+                                );
 
-}else{
+                            } else {
 
-counter.textContent =
-count;
+                                counter.textContent =
+                                    target;
 
-requestAnimationFrame(
-updateCounter
-);
+                            }
 
-}
+                        };
 
-};
+                    updateCounter();
 
-updateCounter();
+                    counterObserver.unobserve(
+                        counter
+                    );
 
-counterObserver.unobserve(
-counter
-);
+                }
 
-}
+            });
 
-});
-
-},
-
-{
-threshold:0.5
-}
-
-);
+        },
+        {
+            threshold: 0.4
+        }
+    );
 
 counters.forEach(counter => {
-
-counterObserver.observe(counter);
-
+    counterObserver.observe(counter);
 });
 
-/* ==========================================
-SKILL BAR ANIMATION
-========================================== */
-
-const progressBars =
-document.querySelectorAll(".progress");
-
-const skillObserver =
-new IntersectionObserver(
-
-entries => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-
-const progress =
-entry.target.dataset.progress;
-
-entry.target.style.width =
-progress + "%";
-
-skillObserver.unobserve(
-entry.target
-);
-
-}
-
-});
-
-},
-
-{
-threshold:0.4
-}
-
-);
-
-progressBars.forEach(bar => {
-
-bar.style.width = "0";
-
-bar.style.transition =
-"width 1.5s ease";
-
-skillObserver.observe(bar);
-
-});
-
-/* ==========================================
-SCROLL REVEAL
-========================================== */
+/* ==================================================
+   SCROLL REVEAL
+================================================== */
 
 const fadeElements =
-document.querySelectorAll(".fade-up");
+    document.querySelectorAll(".fade-up");
 
 const revealObserver =
-new IntersectionObserver(
+    new IntersectionObserver(
+        entries => {
 
-entries => {
+            entries.forEach(entry => {
 
-entries.forEach(entry => {
+                if (entry.isIntersecting) {
 
-if(entry.isIntersecting){
+                    entry.target.classList.add(
+                        "show"
+                    );
 
-entry.target.classList.add(
-"show"
-);
+                }
 
-revealObserver.unobserve(
-entry.target
-);
+            });
 
-}
-
-});
-
-},
-
-{
-threshold:0.15
-}
-
-);
+        },
+        {
+            threshold: 0.15
+        }
+    );
 
 fadeElements.forEach(element => {
+    revealObserver.observe(element);
+});
 
-revealObserver.observe(element);
+/* ==================================================
+   ACTIVE NAVIGATION
+================================================== */
+
+const sections =
+    document.querySelectorAll("section");
+
+const navLinks =
+    document.querySelectorAll(
+        ".nav-menu a"
+    );
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop - 150;
+
+        if (
+            window.scrollY >= sectionTop
+        ) {
+
+            current =
+                section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") ===
+            `#${current}`
+        ) {
+
+            link.classList.add("active");
+
+        }
+
+    });
 
 });
 
-/* ==========================================
-CONTACT FORM
-========================================== */
+/* ==================================================
+   NAVBAR SHADOW
+================================================== */
 
-const contactForm =
-document.getElementById("contactForm");
+const header =
+    document.querySelector(".header");
 
-if(contactForm){
+window.addEventListener("scroll", () => {
 
-contactForm.addEventListener(
+    if (window.scrollY > 50) {
 
-"submit",
+        header.style.boxShadow =
+            "0 8px 25px rgba(0,0,0,.25)";
 
-function(e){
+    } else {
 
-e.preventDefault();
+        header.style.boxShadow = "none";
 
-const button =
-contactForm.querySelector(
-"button"
-);
+    }
 
-button.textContent =
-"Message Sent ✓";
+});
 
-button.disabled = true;
+/* ==================================================
+   BACK TO TOP BUTTON
+================================================== */
 
-setTimeout(() => {
+const backToTop =
+    document.getElementById("backToTop");
 
-button.textContent =
-"Send Message";
+window.addEventListener("scroll", () => {
 
-button.disabled = false;
+    if (window.scrollY > 500) {
 
-contactForm.reset();
+        backToTop.style.display = "flex";
 
-},2000);
+    } else {
 
-}
+        backToTop.style.display = "none";
 
-);
+    }
 
-}
+});
 
-/* ==========================================
-CURRENT YEAR
-========================================== */
+backToTop?.addEventListener("click", () => {
+
+    window.scrollTo({
+
+        top: 0,
+        behavior: "smooth"
+
+    });
+
+});
+
+/* ==================================================
+   CURRENT YEAR
+================================================== */
 
 const yearElement =
-document.getElementById(
-"currentYear"
-);
+    document.getElementById("currentYear");
 
-if(yearElement){
+if (yearElement) {
 
-yearElement.textContent =
-`© ${new Date().getFullYear()} Ayesha Noor Baloch. All Rights Reserved.`;
+    yearElement.textContent =
+        `© ${new Date().getFullYear()} Ayesha Noor Baloch. All Rights Reserved.`;
 
 }
 
-/* ==========================================
-PAGE LOAD ANIMATION
-========================================== */
+/* ==================================================
+   PRELOADER FADE (SAFE)
+================================================== */
 
-window.addEventListener(
-"load",
-() => {
+window.addEventListener("load", () => {
 
-document.body.classList.add(
-"loaded"
+    document.body.classList.add("loaded");
+
+});
+
+/* ==================================================
+   CONSOLE SIGNATURE
+================================================== */
+
+console.log(
+    "%cAyesha Noor Baloch Portfolio",
+    "color:#8b5cf6;font-size:16px;font-weight:bold;"
 );
 
-}
+console.log(
+    "HR Analytics • Data Analytics • Business Intelligence"
 );
-
-/* ==========================================
-OPTIONAL PARTICLE EFFECT
-========================================== */
-
-const hero =
-document.querySelector(".hero");
-
-if(hero){
-
-for(let i = 0; i < 20; i++){
-
-const particle =
-document.createElement("span");
-
-particle.classList.add(
-"particle"
-);
-
-particle.style.left =
-Math.random() * 100 + "%";
-
-particle.style.animationDelay =
-Math.random() * 10 + "s";
-
-hero.appendChild(particle);
-
-}
-
-}
-
